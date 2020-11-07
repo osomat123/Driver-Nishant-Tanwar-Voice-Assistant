@@ -14,7 +14,7 @@ print('Hello! I am a Personal Assistant of Rider OP. My name is Driver. Basicall
 
 engine=pyttsx3.init()
 voices=engine.getProperty('voices')
-engine.setProperty('voice',voices[1].id)
+engine.setProperty('voice',voices[7].id)
 engine.setProperty('rate', 150)
 
 
@@ -113,21 +113,22 @@ if __name__=='__main__':
             x=response.json()
             if x["cod"]!="404":
                 y=x["main"]
-                current_temperature = y["temp"]
+                print(y)
+                current_temperature = round(y["temp"] - 273.15)
                 current_humidiy = y["humidity"]
                 z = x["weather"]
                 weather_description = z[0]["description"]
-                speak(" Temperature in kelvin unit is " +
+                speak(" Temperature is " +
                       str(current_temperature) +
-                      "\n humidity in percentage is " +
+                      " degree celcius\n humidity is " +
                       str(current_humidiy) +
-                      "\n description  " +
+                      " percent\n description  " +
                       str(weather_description))
-                print(" Temperature in kelvin unit = " +
+                print(" Temperature is " +
                       str(current_temperature) +
-                      "\n humidity (in percentage) = " +
+                      " degree celcius\n humidity is " +
                       str(current_humidiy) +
-                      "\n description = " +
+                      " percent\n description  " +
                       str(weather_description))
 
             else:
@@ -139,7 +140,7 @@ if __name__=='__main__':
             speak(f"the time is {strTime}")
 
         elif 'who are you' in statement or 'what can you do' in statement:
-            speak('I am Driver! version 1 point O your persoanl assistant. I am programmed to minor tasks like'
+            speak('I am Driver! version 1 point O your personal assistant. I am programmed to minor tasks like'
                   'opening youtube, google chrome, and gmail, tell time,get top headline news from times of india!'
                   'I also play Rider OP songs!')
 
@@ -161,6 +162,6 @@ if __name__=='__main__':
 
         else:
             #playsound.playsound('Files/Hindi_Responses/not_taught.mp3', True)
-            playsound.playsound('Files/Hindi_Responses/iska superchat lagega.mp3', True)
+            playsound.playsound('Files/Hindi_Responses/iska_superchat_lagega.mp3', True)
 
 time.sleep(3)
